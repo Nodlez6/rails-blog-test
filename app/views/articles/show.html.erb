@@ -1,10 +1,25 @@
-<h1>Article details</h1>
+<h1 class="text-center mt-4"><%= @article.title %></h1>
 
+<div class="container">
+    
+    <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+            <div class="shadow rounded card text-center">
+                <div class="card-header fst-italic">
+                    by Sebastián Gallardo
+                </div>
+                <div class="card-body">
+                    <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+                    <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info" %>
+                    <%= link_to 'Delete', article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"}  %>
+            
+                </div>
+                <div class="card-footer text-msuted">
+                       <small>Created <%= time_ago_in_words(@article.created_at)  %> ago,
+                       edited <%= time_ago_in_words(@article.updated_at)  %></small>
+                </div>
+            </div>
+        </div>
+    </div>           
 
-
-<p>Title: <%= @article.title %></p>
-<p>Description: <%= @article.description %> </p>
-
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure" } %>
-<%= link_to 'Return to articles listing', articles_path(@article) %>
+</div>
